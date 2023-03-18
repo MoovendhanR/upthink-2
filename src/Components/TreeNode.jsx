@@ -6,13 +6,18 @@ function TreeNode({ node }) {
   
     const [showChildren, setShowChildren] = useState(false);
   
+    const [Sign, setSign] = useState('+')
+   
+
     const handleClick = () => {
       setShowChildren(!showChildren);
+      if (Sign === '+') setSign('-')
+      else setSign('+')
     };
     return (
       <>
         <div onClick={handleClick} style={{ marginBottom: "10px" }}>
-          <span>{label}</span>
+          <span>{`${Sign}${label}`}</span>
         </div>
         <ul style={{ paddingLeft: "10px", borderLeft: "1px solid black" }}>
           {showChildren && <Tree treeData={children} />}
